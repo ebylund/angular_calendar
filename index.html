@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html ng-app="calApp">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <title text="">Angular Calendar</title>
+    <link rel="stylesheet/css" type="text/less" href="css/styles.less"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome-4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/font-awesome-4.3.0/less/animated.less">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-xeditable/dist/css/xeditable.css">
+
+  </head>
+  <body ng-controller="calendarRender as ctrl">
+    <cal selected="day"></cal>
+    <span>Date: <label><b>{{day.format('dddd, MMMM Do YYYY')}}</b><br></label></span><br>
+    <span>Week Number: <label><b>{{day.week()}}</b></label></span>
+    <span>Day of Week: <label><b>{{day.format('dddd') }}</b></label></span>
+    <span>Day of Month: <label><b>{{day.date()}}</b></label></span>
+    <span>Day of Year: <label><b>{{day.dayOfYear()}}</b></label></span>
+   
+    <div class="events clearfix">
+       <center><b>Events</b></center>
+       <ul class="list-group clearfix">
+        <li class="" ng-repeat="event in ctrl.getEvents()">
+          <span class="dateDisplay" ng-show="ctrl.changeDate(event.day)">{{event.day.date.valueOf()|date: "fullDate"}}</span>
+          <span>{{ event.text }}</span>
+          <!-- <span>{{event.name }}</span> -->
+        </li>
+      </ul>
+    </div>
+    <!-- <i class="fa fa-cog fa-spin"></i> -->
+    <script src="node_modules/underscore/underscore.js" type="text/javascript"></script>
+    <script src="node_modules/angular/angular.min.js" type="text/javascript"></script>
+    <script src="node_modules/less/dist/less.js" type="text/javascript"></script>
+    <script src="node_modules/moment/moment.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/factory.js"></script>
+    <script type="text/javascript" src="js/directives.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+  </body>
+</html>
